@@ -2,12 +2,18 @@
 
 ## Description
 
-Devops Project
+Devops Project 
+
+## Objectives
+
+1. Use prepared User API application and run tests
+2. Using test-driven development (TDD) create GET user functionality
 
 
 
 
-## Auteurs
+
+## Authors
 - **Ignace BUI** - <ignace.bui@edu.ece.fr> - ING4-APP-BDA
 - **Jean-Marie FANKAM** - <jeanmarie.fankam@edu.ece.fr> - ING4-APP-BDA
 
