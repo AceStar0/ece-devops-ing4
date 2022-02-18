@@ -9,7 +9,18 @@ Devops Project
 1. Use prepared User API application and run tests
 2. Using test-driven development (TDD) create GET user functionality
 
+## Before starting
 
+To clone the repository
+```
+git clone https://github.com/AceStar0/ece-devops-ing4.git
+```
+
+To clone the repository
+```
+git clone
+```
+ 
 
 
 
