@@ -16,9 +16,9 @@ To clone the repository
 git clone https://github.com/AceStar0/ece-devops-ing4.git
 ```
 
-To clone the repository
+To pull the repository
 ```
-git clone
+git pull
 ```
  
 
