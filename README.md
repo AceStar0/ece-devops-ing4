@@ -28,7 +28,7 @@ git pull
 - [X] Lab 3 : continuous-testing
   - [X] Use prepared User API application and run tests
   - [ ] Using test-driven development (TDD) create GET user functionality
-- [X] Lab 4 : ci-cd  
+- [ ] Lab 4 : ci-cd  
 
 
 ## Authors
