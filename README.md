@@ -29,6 +29,8 @@ git pull
   - [X] Use prepared User API application and run tests
   - [ ] Using test-driven development (TDD) create GET user functionality
 - [ ] Lab 4 : ci-cd  
+  - [ ] : Continuous Integration with GitHub Actions
+  - [ ] : Continuous Delivery (Deployment) with Heroku
 
 
 ## Authors
