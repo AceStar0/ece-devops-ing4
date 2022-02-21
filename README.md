@@ -20,8 +20,15 @@ To pull the repository
 ```
 git pull
 ```
- 
 
+## Progress
+
+- [X] Lab 1 : devops-introduction
+- [X] Lab 2 : scm
+- [X] Lab 3 : continuous-testing
+  - [X] Use prepared User API application and run tests
+  - [ ] Using test-driven development (TDD) create GET user functionality
+- [X] Lab 4 : ci-cd  
 
 
 ## Authors
