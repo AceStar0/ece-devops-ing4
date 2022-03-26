@@ -15,7 +15,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "ece-devops_ing4" #Must be unique in Heroku
           heroku_email: "ignace.bui@outlook.com"
-          appdir: ./user-api
+          appdir: ././user-api
 
 
 #name: Node.js CI
