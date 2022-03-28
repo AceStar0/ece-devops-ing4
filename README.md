@@ -29,13 +29,13 @@ git pull
   - [X] Use prepared User API application and run tests
   - [ ] Using test-driven development (TDD) create GET user functionality
 - [ ] Lab 4 : ci-cd  
-  - [ ] : Continuous Integration with GitHub Actions
+  - [X] : Continuous Integration with GitHub Actions
   - [ ] : Continuous Delivery (Deployment) with Heroku
 - [ ] Lab 5 : infrustructure-as-code
   - [ ] : Imperative - Using Vagrant with Shell Provisioner
     - [ ] : Prepare a virtual environment
     - [ ] : Create a virtual machine (VM)
-    - [ ] : Check that everything is ok by connecting to the VM via SSH
+    - [ ] : Check that everything is OK by connecting to the VM via SSH
     - [ ] : Play with different commands for Shell Provisioner
   - [ ] : Declarative - GitLab installation using Vagrant and Ansible Provisioner
     - [ ] : Prepare a virtual environment
