@@ -23,15 +23,15 @@ git pull
 
 ## Progress
 
-- [X] Lab 1 : devops-introduction
-- [X] Lab 2 : scm
-- [X] Lab 3 : continuous-testing
+- [X] Lab 1: devops-introduction
+- [X] Lab 2: scm
+- [X] Lab 3: continuous-testing
   - [X] Use prepared User API application and run tests
   - [ ] Using test-driven development (TDD) create GET user functionality
-- [X] Lab 4 : ci-cd  
+- [X] Lab 4: ci-cd  
   - [X] : Continuous Integration with GitHub Actions
   - [X] : Continuous Delivery (Deployment) with Heroku
-- [X] Lab 5 : infrustructure-as-code
+- [X] Lab 5: infrustructure-as-code
   - [X] : Imperative - Using Vagrant with Shell Provisioner
     - [X] : Prepare a virtual environment
     - [X] : Create a virtual machine (VM)
@@ -43,6 +43,12 @@ git pull
     - [X] : Test the installation
     - [X] : Instructions for updating playbooks
   - [X] : Declarative - Configure a health check for GitLab
+- [X] : Lab 6: containers with Docker
+  - [X] : Install Docker
+  - [X] : Write a Dockerfile and build a Docker image
+  - [X] : Run a Docker with multiple options
+  - [X] : Share your Docker container with a classmate
+  - [X] : Build and run a multiple container app with Docker Compose
 
 
 
