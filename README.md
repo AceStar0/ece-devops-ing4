@@ -31,18 +31,18 @@ git pull
 - [X] Lab 4 : ci-cd  
   - [X] : Continuous Integration with GitHub Actions
   - [X] : Continuous Delivery (Deployment) with Heroku
-- [ ] Lab 5 : infrustructure-as-code
-  - [ ] : Imperative - Using Vagrant with Shell Provisioner
+- [X] Lab 5 : infrustructure-as-code
+  - [X] : Imperative - Using Vagrant with Shell Provisioner
     - [X] : Prepare a virtual environment
     - [X] : Create a virtual machine (VM)
-    - [ ] : Check that everything is OK by connecting to the VM via SSH
-    - [ ] : Play with different commands for Shell Provisioner
+    - [X] : Check that everything is OK by connecting to the VM via SSH
+    - [X] : Play with different commands for Shell Provisioner
   - [X] : Declarative - GitLab installation using Vagrant and Ansible Provisioner
     - [X] : Prepare a virtual environment
     - [X] : Create and provision a virtual machine (VM)
     - [X] : Test the installation
     - [X] : Instructions for updating playbooks
-  - [ ] : Declarative - Configure a health check for GitLab
+  - [X] : Declarative - Configure a health check for GitLab
 
 
 
