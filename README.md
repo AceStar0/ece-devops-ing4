@@ -23,26 +23,32 @@ git pull
 
 ## Progress
 
-- [X] Lab 1 : devops-introduction
-- [X] Lab 2 : scm
-- [X] Lab 3 : continuous-testing
+- [X] Lab 1: devops-introduction
+- [X] Lab 2: scm
+- [X] Lab 3: continuous-testing
   - [X] Use prepared User API application and run tests
   - [ ] Using test-driven development (TDD) create GET user functionality
-- [X] Lab 4 : ci-cd  
+- [X] Lab 4: ci-cd  
   - [X] : Continuous Integration with GitHub Actions
   - [X] : Continuous Delivery (Deployment) with Heroku
-- [ ] Lab 5 : infrustructure-as-code
-  - [ ] : Imperative - Using Vagrant with Shell Provisioner
+- [X] Lab 5: infrustructure-as-code
+  - [X] : Imperative - Using Vagrant with Shell Provisioner
     - [X] : Prepare a virtual environment
     - [X] : Create a virtual machine (VM)
-    - [ ] : Check that everything is OK by connecting to the VM via SSH
-    - [ ] : Play with different commands for Shell Provisioner
+    - [X] : Check that everything is OK by connecting to the VM via SSH
+    - [X] : Play with different commands for Shell Provisioner
   - [X] : Declarative - GitLab installation using Vagrant and Ansible Provisioner
     - [X] : Prepare a virtual environment
     - [X] : Create and provision a virtual machine (VM)
     - [X] : Test the installation
     - [X] : Instructions for updating playbooks
-  - [ ] : Declarative - Configure a health check for GitLab
+  - [X] : Declarative - Configure a health check for GitLab
+- [X] : Lab 6: containers with Docker
+  - [X] : Install Docker
+  - [X] : Write a Dockerfile and build a Docker image
+  - [X] : Run a Docker with multiple options
+  - [X] : Share your Docker container with a classmate
+  - [X] : Build and run a multiple container app with Docker Compose
 
 
 
