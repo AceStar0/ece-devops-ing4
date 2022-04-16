@@ -67,6 +67,6 @@ git pull
     <p>
     Copyright © Ignace BUI &  Jean-Marie FANKAM, 2022
     </p>
-    <img src="https://ecole.ece.fr/wp-content/uploads/sites/3/2021/11/ECE_LOGO_2021_web1-1.jpg.webp" height=90">
+    <img src="./image/ece_logo.png" height=90">
   </center>
 </footer>
