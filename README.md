@@ -1,13 +1,19 @@
-# ECE DevOps - ING4
+# ECE - Devops Project - ING4
 
 ## Description
 
-Devops Project 
+During this project, we will be implementing a web API application with a Redis database along with the environment for automatating the building, testing, deployment and running of our project.
 
 ## Objectives
 
-1. Use prepared User API application and run tests
-2. Using test-driven development (TDD) create GET user functionality
+1. Create a web application
+2. Apply CI/CD pipeline
+3. Configure and provision a virtual environment and run the application using the IaC approach
+4. Build Docker image of the application
+5. Make container orchestration using Docker Compose
+6. Make container orchestration using Kubernetes
+
+
 
 ## Before starting
 
