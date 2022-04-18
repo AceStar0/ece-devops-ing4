@@ -1,10 +1,10 @@
 ---
-- hosts: nodejs_server
+- hosts: gitlab_server
   # Run commands as root
   become: true
   # Roles to be executed on these hosts
   roles:
-  - role: nodejs/install
+  - role: gitlab/install
     tags: install
 
   - role: gitlab/healthchecks

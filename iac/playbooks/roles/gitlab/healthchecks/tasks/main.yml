@@ -21,8 +21,29 @@
   # Register the output of the module in a variable
   register: gitlab_health
 
+- name: Check GitLab Readiness
+  uri:
+    url: http://127.0.0.1/-/readiness
+    return_content: yes
+  # Register the output of the module in a variable
+  register: gitlab_readiness
+ 
+- name: Check GitLab Liveness
+  uri:
+    url: http://127.0.0.1/-/liveness
+    return_content: yes
+  # Register the output of the module in a variable
+  register: gitlab_liveness
+  
 - name: Print GitLab health
   debug:
     msg: "{{ gitlab_health.content }}"
 
 # Run the 2 other kind of health checks below
+- name: Print GitLab Readiness
+  debug:
+    msg: "{{ gitlab_readiness.content }}"
+    
+- name: Print GitLab Liveness
+  debug:
+    msg: "{{ gitlab_liveness.content }}"
