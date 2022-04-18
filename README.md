@@ -13,6 +13,25 @@ During this project, we will be implementing a web API application with a Redis 
 5. Make container orchestration using Docker Compose
 6. Make container orchestration using Kubernetes
 
+## 1. Create a web application
+
+```
+npm start
+```
+
+## 2. Apply CI/CD pipeline
+
+## 3. Configure and provision a virtual environment and run the application using the IaC approach
+```
+vagrant up
+```
+```
+vagrant provision
+```
+## 4. Build Docker image of the application
+## 5. Make container orchestration using Docker Compose
+## 6. Make container orchestration using Kubernetes
+
 
 
 ## Before starting
