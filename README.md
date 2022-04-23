@@ -38,11 +38,12 @@ From the /user-api directory of the repository, run:
 ```
 npm run start
 ```
-(image)
+![image](https://user-images.githubusercontent.com/72024438/164916204-94e6e922-03c1-4cee-acb3-53ffbfed19b7.png)
 
 http://localhost:3000 will be accessible and our web application will run :
 
-(image)
+![image](https://user-images.githubusercontent.com/72024438/164916211-0d61b41a-7003-46e3-9c1c-94c28aff844e.png)
+
 
   2. Create a user
 
@@ -75,7 +76,7 @@ npm run test
   
 All 12 tests should be passed :  
 
-(image)
+![image](https://user-images.githubusercontent.com/72024438/164916220-09678997-9f02-4b04-baa4-ca42010338e2.png)
 
 
 ## 2. Apply CI/CD pipeline
