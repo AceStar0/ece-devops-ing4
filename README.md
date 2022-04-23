@@ -7,13 +7,29 @@ During this project, we will be implementing a web API application with a Redis 
 ## Objectives
 
 1. Create a web application
-2. Apply CI/CD pipeline
+2. Apply CI/CD pipeline 
 3. Configure and provision a virtual environment and run the application using the IaC approach
 4. Build Docker image of the application
 5. Make container orchestration using Docker Compose
 6. Make container orchestration using Kubernetes
 
 ## 1. Create a web application
+
+## Installation
+
+This application is implemented in NodeJS along with a Redis database.
+
+1. [Install NodeJS](https://nodejs.org/en/download/)
+2. [Install Redis](https://redis.io/download)
+3. Import the user-api application 
+
+Go to the user-api/ directory of the cloned repository and run:
+
+```
+npm install 
+```
+
+![image]("./image/screenshot.png")
 
 ```
 npm start
