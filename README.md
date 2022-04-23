@@ -7,7 +7,7 @@ During this project, we will be implementing a web API application with a Redis 
 ## Objectives
 
 1. Create a web application
-2. Apply CI/CD pipeline 
+2. Apply CI/CD pipeline
 3. Configure and provision a virtual environment and run the application using the IaC approach
 4. Build Docker image of the application
 5. Make container orchestration using Docker Compose
@@ -15,7 +15,7 @@ During this project, we will be implementing a web API application with a Redis 
 
 ## 1. Create a web application
 
-## Installation
+### Installation
 
 This application is implemented in NodeJS along with a Redis database.
 
@@ -29,11 +29,54 @@ Go to the user-api/ directory of the cloned repository and run:
 npm install 
 ```
 
-![image]("./image/screenshot.png")
+### Usage
+
+  1. Run a web server
+
+From the /user-api directory of the repository, run:
 
 ```
-npm start
+npm run start
 ```
+(image)
+
+http://localhost:3000 will be accessible and our web application will run :
+
+(image)
+
+  2. Create a user
+
+Send a POST request using the terminal:
+
+```bash
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"username":"sergkudinov", "firstname":"sergei", lastname":"kudinov"}' \
+  http://localhost:3000/user
+```
+
+It will output:
+
+```
+{"status":"success","msg":"OK"}
+```  
+After, if you go to http://localhost:3000/user/sergkudinov, with "sergkudinov" being the username that you had in your POST data, it will display in the browser the following, with correspondance to the data that you posted:  
+```
+{"status":"success","msg":{"firstname":"sergei","lastname":"kudinov"}}
+```
+
+## Testing
+
+From the root directory of the project, run:
+
+```
+npm run test
+```  
+  
+All 12 tests should be passed :  
+
+(image)
+
 
 ## 2. Apply CI/CD pipeline
 
