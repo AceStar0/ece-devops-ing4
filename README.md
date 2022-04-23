@@ -157,11 +157,23 @@ vagrant up
 ```
 vagrant provision
 ```
+
+![image](image/3_syncfile.png)
+
+![image](image/3_folder.png)
+
 ## 4. Build Docker image of the application
+
+![image](image/4_docker.png)
+
 ## 5. Make container orchestration using Docker Compose
 ## 6. Make container orchestration using Kubernetes
 
+![image](image/6_get_deployments.png)
 
+![image](image/6_get_services.png)
+
+![image](image/6_dashboard.png)
 
 ## Before starting
 
