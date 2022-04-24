@@ -30,10 +30,10 @@ During this project, we will be implementing a web API application with a Redis 
 # Before starting
 
 To clone the repository :
-```
+
+```bash
 git clone https://github.com/AceStar0/ece-devops-ing4.git
 ```
-
 
 # 1. Creation of a NodeJS web application
 
@@ -46,27 +46,27 @@ This application is implemented in NodeJS along with a Redis database.
 
 Go to the [user-api](./user-api/) directory of the cloned repository and run:
 
-```
+```bash
 npm install 
 ```
 
 ## Usage
 
-  1. Run a web server
+- Run a web server
 
 From the [user-api](./user-api/) directory of the repository, run:
 
-```
+```bash
 npm run start
 ```
+
 ![image](image/1.%20npm_run_start.png)
 
-http://localhost:3000 will be accessible and our web application will run (make sure to open the Redis server):
+<http://localhost:3000> will be accessible and our web application will run (make sure to open the Redis server):
 
 ![image](image/1.%20localhost3000.png)
 
-
-  2. Create a user
+- Create a user
 
 Send a POST request using the terminal:
 
@@ -82,9 +82,10 @@ It will output:
 ```
 {"status":"success","msg":"OK"}
 ```  
-After, if you go to http://localhost:3000/user/sergkudinov, with "sergkudinov" being the username that you had in your POST data, it will display in the browser the following, with correspondance to the data that you posted:  
 
-```
+After, if you go to <http://localhost:3000/user/sergkudinov>, with "sergkudinov" being the username that you had in your POST data, it will display in the browser the following, with correspondance to the data that you posted:  
+
+```bash
 {"status":"success","msg":{"firstname":"sergei","lastname":"kudinov"}}
 ```
 
@@ -92,7 +93,7 @@ After, if you go to http://localhost:3000/user/sergkudinov, with "sergkudinov" b
 
 From the root directory of the project, run:
 
-```
+```bash
 npm run test
 ```  
   
@@ -100,11 +101,10 @@ All 12 tests should be passed :
 
 ![image](image/1.%20npm_run_test.png)
 
-
 # 2. Application of CI/CD pipeline uning Heroku and GitHub Actions
 
-  * Continuous Integration with GitHub Actions
-  * Continuous Delivery (Deployment) with Heroku
+- Continuous Integration with GitHub Actions
+- Continuous Delivery (Deployment) with Heroku
   
 We created an YAML file [.github/workflow/main.yml](./.github/workflows/main.yml) and we add this code :
 
@@ -165,6 +165,7 @@ jobs:
           heroku_email: "ignace.bui@outlook.com"
           appdir: user-api # Define appdir if you application is in a subfolder
 ```
+
 Once the CI/CD is integrated, we do have an automatic deployment in the Github Actions tab :
 ![image](image/2_github_actions.png)
 
@@ -176,20 +177,20 @@ As we have configured Heroku, we can check our Heroku app and we do have our web
 
 Redis service on Heroku is free, but it requires adding credit card information. Considering this limitation we will not run Redis on Heroku, and the application will be partially non-functional (it will print the "Hello world!" message on the home page, but the user API will not work). However, it will be enough to experience our CI/CD pipeline.
 
-
 # 3. Application of the IaC approach
 
-## Installation 
+## Installation
 
 Make sure you install these tools :
 
-1. [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads) 
-2. [Install Vagrant](https://www.vagrantup.com/downloads.html)  
+- [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- [Install Vagrant](https://www.vagrantup.com/downloads.html)  
   
-```
+```bash
 vagrant up
 ```
-```
+
+```bash
 vagrant provision
 ```
 
@@ -201,43 +202,45 @@ vagrant provision
 
 ## Installation
 
-* [Docker Desktop](https://www.docker.com/get-started)  
+- [Docker Desktop](https://www.docker.com/get-started)  
   
 ## Usage
 
-* We have created an build an image of our app and pushed it to Docker Hub :
+- We have created an build an image of our app and pushed it to Docker Hub :
 ![image](image/4_docker.png)
 
-* In the [user-api](./user-api/) directory of the repository's clone (where you can also find the [Dockerfile](/user-api/Dockerfile)), run the following command to pull our image :
- 
+- In the [user-api](./user-api/) directory of the repository's clone (where you can also find the [Dockerfile](/user-api/Dockerfile)), run the following command to pull our image :
+
 ```bash
 docker pull acestar01/user-api
-```    
+```
 
-* Check if you have pulled the images to your local Docker images with the following command:
+- Check if you have pulled the images to your local Docker images with the following command:
+
 ```bash
 docker images
-```    
+```
 
-* Run the image:
+- Run the image:
+
 ```bash
 docker run -p 12345:3000 -d acestar01/user-api
-```   
+```
   
-* Check if the container is running or not, with the collowing command :
+- Check if the container is running or not, with the collowing command :
+
 ```bash
 docker ps
 ```  
 
-* Now open your localhost: http://localhost:12345/, and if all went fine, you will have:  
+- Now open your localhost: <http://localhost:12345/>, and if all went fine, you will have:  
 
 (imaggeeeeeeee)
 
-
-
 # 5. Organization of Container with Docker Compose
 
-* Configure the [`docker-compose.yaml`](docker-compose.yaml) file to pull our user-api image : 
+- Configure the [`docker-compose.yaml`](docker-compose.yaml) file to pull our user-api image :
+
 ```yml
 version: '3'
 
@@ -254,26 +257,25 @@ services:
 
 # 6. Organization of Docker with Kubernetes
 
-##  Installation of Minikube
+## Installation of Minikube
 
-* [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) following the instructions depending on your OS.
+- [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) following the instructions depending on your OS.
 
 Start Minikube with:
 
-```
+```bash
 minikube start
 ```
 
 Verify that everything is OK with:
-```
+
+```bash
 minikube status
 ```
 
-
-
 ## Deploy our app using Manifest YAML files
 
-* Configure out the [`./k8s/deployment.yml`](./k8s/deployment.yml) file :
+- Configure out the [`./k8s/deployment.yml`](./k8s/deployment.yml) file :
 
 ```yml
 apiVersion: apps/v1
@@ -327,12 +329,13 @@ spec:
             value: "6379"
 ```
 
-* Once completed, run:
-   ```
-   kubectl apply -f deployment.yaml
-   ```
+- Once completed, run:
 
-* Configure out the [`./k8s/service.yml`](./k8s/service.yml) file :
+```bash
+kubectl apply -f deployment.yaml
+```
+
+- Configure out the [`./k8s/service.yml`](./k8s/service.yml) file :
 
 ```yml
 apiVersion: v1
@@ -365,41 +368,43 @@ spec:
       targetPort: 3000
 ```
 
-* Once you completed the file, run:
-   ```
-   kubectl apply -f service.yaml
-   ```
+- Once you completed the file, run:
 
-* Check if the deployments are running with the following command :
+```bash
+kubectl apply -f service.yaml
+```
+
+- Check if the deployments are running with the following command :
   
 ```bash
 kubectl get deployments
 ```  
+
 ![image](image/6_get_deployments.png)
 
+- Check if the services are running with the following command :
 
-* Check if the services are running with the following command :
 ```bash
 kubectl get services
 ```
+
 ![image](image/6_get_services.png)
 
+- Check if the pods are running with the following command :
 
-* Check if the pods are running with the following command :
 ```bash
 kubectl get pods
 ```  
-It should print you that: 
+
 (imageeeee)
   
+- We can use the [dashboard](https://minikube.sigs.k8s.io/docs/handbook/dashboard/) functionnality of Minikube to have a summary of the status through a dashboard with the following command that will open a new webpage :  
 
-* We can use the [dashboard](https://minikube.sigs.k8s.io/docs/handbook/dashboard/) functionnality of Minikube to have a summary of the status through a dashboard with the following command that will open a new webpage :  
 ```bash
 minikube dashboard
 ```  
 
 ![image](image/6_dashboard.png)
-
 
 # Progress
 
@@ -430,11 +435,12 @@ minikube dashboard
   - [X] : Share your Docker container with a classmate
   - [X] : Build and run a multiple container app with Docker Compose
 
-
-
 # Authors
-- **Ignace BUI** - <ignace.bui@edu.ece.fr> - ING4-APP-BDA
-- **Jean-Marie FANKAM** - <jeanmarie.fankam@edu.ece.fr> - ING4-APP-BDA
+
+- **[Ignace BUI](https://www.linkedin.com/in/ignace-bui/)** - <ignace.bui@edu.ece.fr> - ING4-APP-BDA
+- **[Jean-Marie FANKAM](https://www.linkedin.com/in/jean-marie-fankam/)** - <jeanmarie.fankam@edu.ece.fr> - ING4-APP-BDA
+
+<br>
 
 <footer>
   <center>
