@@ -413,7 +413,7 @@ spec:
 * Once completed, run:
 
 ```bash
-kubectl apply -f deployment.yaml
+kubectl apply -f deployment.yml
 ```
 
 * Configure out the [`./k8s/service.yml`](./k8s/service.yml) file :
@@ -452,7 +452,7 @@ spec:
 * Once you completed the file, run:
 
 ```bash
-kubectl apply -f service.yaml
+kubectl apply -f service.yml
 ```
 
 * Check if the deployments are running with the following command :
