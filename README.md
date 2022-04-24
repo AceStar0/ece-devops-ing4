@@ -175,9 +175,16 @@ As we have configured Heroku, we can check our Heroku app and we do have our web
 
 ![image](image/2_herokuapp.png)
 
+
 Redis service on Heroku is free, but it requires adding credit card information. Considering this limitation we will not run Redis on Heroku, and the application will be partially non-functional (it will print the "Hello world!" message on the home page, but the user API will not work). However, it will be enough to experience our CI/CD pipeline.
 
+
 # 3. Application of the IaC approach
+
+Infrastructure as Code (IaC) is a process of creating and managing systems using simple lines of code.
+For this approch, we will be using :
+* **Vagrant** : Vagrant is a machine provisioning tool used to create VMs and then populate them with applications.
+* **Ansible** : Ansible is an open-source automation tool, or platform, used for IT tasks such as configuration management, application deployment, intraservice orchestration, and provisioning.
 
 ## Installation
 
@@ -199,6 +206,8 @@ vagrant provision
 ![image](image/3_folder.png)
 
 # 4. Build Docker image of the application
+
+Docker enables developers to package applications into containers—standardized executable components combining application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.
 
 ## Installation
 
@@ -239,6 +248,8 @@ docker ps
 
 # 5. Organization of Container with Docker Compose
 
+Docker Compose is a tool that was developed to help define and share multi-container applications. With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
+
 - Configure the [`docker-compose.yaml`](docker-compose.yaml) file to pull our user-api image :
 
 ```yml
@@ -256,6 +267,8 @@ services:
 ```
 
 # 6. Organization of Docker with Kubernetes
+
+Kubernetes is open-source orchestration software that provides an API to control how and where those containers will run. It allows you to run your Docker containers and workloads and helps you to tackle some of the operating complexities when moving to scale multiple containers, deployed across multiple servers.
 
 ## Installation of Minikube
 
@@ -396,7 +409,7 @@ kubectl get services
 kubectl get pods
 ```  
 
-(imageeeee)
+![image](image/6_get_pods.png)
   
 - We can use the [dashboard](https://minikube.sigs.k8s.io/docs/handbook/dashboard/) functionnality of Minikube to have a summary of the status through a dashboard with the following command that will open a new webpage :  
 
@@ -434,6 +447,7 @@ minikube dashboard
   - [X] : Run a Docker with multiple options
   - [X] : Share your Docker container with a classmate
   - [X] : Build and run a multiple container app with Docker Compose
+
 
 # Authors
 
