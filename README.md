@@ -13,18 +13,24 @@ During this project, we will be implementing a web API application with a Redis 
 - [1. Creation of a NodeJS web application](#1-creation-of-a-nodejs-web-application)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Testing](#testing)
+  - [Test](#test)
 - [2. Application of CI/CD pipeline uning Heroku and GitHub Actions](#2-application-of-cicd-pipeline-uning-heroku-and-github-actions)
-- [3. Application of the IaC approach](#3-application-of-the-iac-approach)
   - [Installation](#installation-1)
-- [4. Build Docker image of the application](#4-build-docker-image-of-the-application)
+  - [Configuration of the workflow](#configuration-of-the-workflow)
+  - [Test with Heroku](#test-with-heroku)
+- [3. Application of the IaC approach](#3-application-of-the-iac-approach)
   - [Installation](#installation-2)
+  - [Creating, Configuring and Provisionning our VM](#creating-configuring-and-provisionning-our-vm)
+  - [Test](#test-1)
+- [4. Build Docker image of the application](#4-build-docker-image-of-the-application)
+  - [Installation](#installation-3)
   - [Usage](#usage-1)
 - [5. Organization of Container with Docker Compose](#5-organization-of-container-with-docker-compose)
+  - [Configuration](#configuration)
+  - [Test](#test-2)
 - [6. Organization of Docker with Kubernetes](#6-organization-of-docker-with-kubernetes)
   - [Installation of Minikube](#installation-of-minikube)
   - [Deploy our app using Manifest YAML files](#deploy-our-app-using-manifest-yaml-files)
-- [Progress](#progress)
 - [Authors](#authors)
 
 # Before starting
@@ -65,10 +71,7 @@ npm run start
 <http://localhost:3000> will be accessible and our web application will run (make sure to open the Redis server):
 
 ![image](image/1.%20localhost3000.png)
-
-- Create a user
-
-Send a POST request using the terminal:
+* To create a user, send the curl POST request to the application with the user data:
 
 ```bash
 curl --header "Content-Type: application/json" \
@@ -79,7 +82,7 @@ curl --header "Content-Type: application/json" \
 
 It will output:
 
-```
+```bash
 {"status":"success","msg":"OK"}
 ```  
 
@@ -89,7 +92,7 @@ After, if you go to <http://localhost:3000/user/sergkudinov>, with "sergkudinov"
 {"status":"success","msg":{"firstname":"sergei","lastname":"kudinov"}}
 ```
 
-## Testing
+## Test
 
 From the root directory of the project, run:
 
@@ -103,9 +106,20 @@ All 12 tests should be passed :
 
 # 2. Application of CI/CD pipeline uning Heroku and GitHub Actions
 
-- Continuous Integration with GitHub Actions
-- Continuous Delivery (Deployment) with Heroku
-  
+
+- Continuous Integration with **GitHub Actions** :
+  CI builds automatically and tests our project.
+
+- Continuous Delivery (Deployment) with **Heroku** :
+  CD deploys the project.
+  To link the Github repo to Heroku, we will add a secret key and modify the worflow.
+
+## Installation 
+
+  * Create an [Heroku](https://www.heroku.com) account
+
+## Configuration of the workflow
+
 We created an YAML file [.github/workflow/main.yml](./.github/workflows/main.yml) and we add this code :
 
 ```yml
@@ -166,8 +180,11 @@ jobs:
           appdir: user-api # Define appdir if you application is in a subfolder
 ```
 
-Once the CI/CD is integrated, we do have an automatic deployment in the Github Actions tab :
+
+* Once the CI/CD is integrated, we do have an automatic deployment in the Github Actions tab :
 ![image](image/2_github_actions.png)
+
+## Test with Heroku
 
 As we have configured Heroku, we can check our Heroku app and we do have our web application running :
 
@@ -190,17 +207,54 @@ For this approch, we will be using :
 
 Make sure you install these tools :
 
-- [Install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-- [Install Vagrant](https://www.vagrantup.com/downloads.html)  
-  
+- Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+- Install [Vagrant](https://www.vagrantup.com/downloads.html)  
+- Install [hashicorp/bionic64](https://www.vagrantup.com/docs/boxes)
+
+## Creating, Configuring and Provisionning our VM  
+
+* Preparing a Virtual Environment : to start, open a PowerShell and run this command:
+
+```
+Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+
+* We will be using hashicorp/bionic64 which handles syncronized folders better than Centos/7 
+
+
+```bash
+vagrant box add hashicorp/bionic64
+```
+* Run the following command to create a VM in the [/iac](/iac) directory ;
 ```bash
 vagrant up
 ```
+
+The VM should now be initialized, have downloaded Ansiblelso and started provsionning by using the content of the [playbook](/iac/playbooks/) file
+
+If the VM failed to provision, run the following code :
+ 
 
 ```bash
 vagrant provision
 ```
 
+## Test
+
+* We will now be able to connect to SSH in to the VM :  
+```bash
+vagrant ssh
+```  
+* We can naviguate through directories and see that our [user-api](/user-api/) folder in our local repository is shared with the VM. 
+  
+* Let's check in the folder exists in the VM: 
+```bash
+cd ..
+cd user-api/
+ls
+```   
+* Here are the same folder in both the VM and the host :
+  
 ![image](image/3_syncfile.png)
 
 ![image](image/3_folder.png)
@@ -244,11 +298,13 @@ docker ps
 
 - Now open your localhost: <http://localhost:12345/>, and if all went fine, you will have:  
 
-(imaggeeeeeeee)
+![image](image/4_localhost12345.png)
 
 # 5. Organization of Container with Docker Compose
 
 Docker Compose is a tool that was developed to help define and share multi-container applications. With Compose, we can create a YAML file to define the services and with a single command, can spin everything up or tear it all down.
+
+## Configuration
 
 - Configure the [`docker-compose.yaml`](docker-compose.yaml) file to pull our user-api image :
 
@@ -266,21 +322,33 @@ services:
     image: acestar01/user-api
 ```
 
+## Test
+
+- Run the container :
+
+```bash
+docker-compose up
+```
+
+- Now open your localhost: <http://localhost:5000/>, and if all went fine, you will have : 
+
+![image](image/5_localhost5000.png)
+
 # 6. Organization of Docker with Kubernetes
 
 Kubernetes is open-source orchestration software that provides an API to control how and where those containers will run. It allows you to run your Docker containers and workloads and helps you to tackle some of the operating complexities when moving to scale multiple containers, deployed across multiple servers.
 
 ## Installation of Minikube
 
-- [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) following the instructions depending on your OS.
+* [Install Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) following the instructions depending on your OS.
 
-Start Minikube with:
+* Start Minikube with:
 
 ```bash
 minikube start
 ```
 
-Verify that everything is OK with:
+* Verify that everything is OK with:
 
 ```bash
 minikube status
@@ -288,7 +356,7 @@ minikube status
 
 ## Deploy our app using Manifest YAML files
 
-- Configure out the [`./k8s/deployment.yml`](./k8s/deployment.yml) file :
+* Configure out the [`./k8s/deployment.yml`](./k8s/deployment.yml) file :
 
 ```yml
 apiVersion: apps/v1
@@ -342,13 +410,13 @@ spec:
             value: "6379"
 ```
 
-- Once completed, run:
+* Once completed, run:
 
 ```bash
 kubectl apply -f deployment.yaml
 ```
 
-- Configure out the [`./k8s/service.yml`](./k8s/service.yml) file :
+* Configure out the [`./k8s/service.yml`](./k8s/service.yml) file :
 
 ```yml
 apiVersion: v1
@@ -381,13 +449,13 @@ spec:
       targetPort: 3000
 ```
 
-- Once you completed the file, run:
+* Once you completed the file, run:
 
 ```bash
 kubectl apply -f service.yaml
 ```
 
-- Check if the deployments are running with the following command :
+* Check if the deployments are running with the following command :
   
 ```bash
 kubectl get deployments
@@ -395,7 +463,7 @@ kubectl get deployments
 
 ![image](image/6_get_deployments.png)
 
-- Check if the services are running with the following command :
+* Check if the services are running with the following command :
 
 ```bash
 kubectl get services
@@ -403,7 +471,7 @@ kubectl get services
 
 ![image](image/6_get_services.png)
 
-- Check if the pods are running with the following command :
+* Check if the pods are running with the following command :
 
 ```bash
 kubectl get pods
@@ -411,7 +479,7 @@ kubectl get pods
 
 ![image](image/6_get_pods.png)
   
-- We can use the [dashboard](https://minikube.sigs.k8s.io/docs/handbook/dashboard/) functionnality of Minikube to have a summary of the status through a dashboard with the following command that will open a new webpage :  
+* We can use the [dashboard](https://minikube.sigs.k8s.io/docs/handbook/dashboard/) functionnality of Minikube to have a summary of the status through a dashboard with the following command that will open a new webpage :  
 
 ```bash
 minikube dashboard
@@ -419,34 +487,17 @@ minikube dashboard
 
 ![image](image/6_dashboard.png)
 
-# Progress
 
-- [X] Lab 1: devops-introduction
-- [X] Lab 2: scm
-- [X] Lab 3: continuous-testing
-  - [X] Use prepared User API application and run tests
-  - [ ] Using test-driven development (TDD) create GET user functionality
-- [X] Lab 4: ci-cd  
-  - [X] : Continuous Integration with GitHub Actions
-  - [X] : Continuous Delivery (Deployment) with Heroku
-- [X] Lab 5: infrustructure-as-code
-  - [X] : Imperative - Using Vagrant with Shell Provisioner
-    - [X] : Prepare a virtual environment
-    - [X] : Create a virtual machine (VM)
-    - [X] : Check that everything is OK by connecting to the VM via SSH
-    - [X] : Play with different commands for Shell Provisioner
-  - [X] : Declarative - GitLab installation using Vagrant and Ansible Provisioner
-    - [X] : Prepare a virtual environment
-    - [X] : Create and provision a virtual machine (VM)
-    - [X] : Test the installation
-    - [X] : Instructions for updating playbooks
-  - [X] : Declarative - Configure a health check for GitLab
-- [X] : Lab 6: containers with Docker
-  - [X] : Install Docker
-  - [X] : Write a Dockerfile and build a Docker image
-  - [X] : Run a Docker with multiple options
-  - [X] : Share your Docker container with a classmate
-  - [X] : Build and run a multiple container app with Docker Compose
+* Run the following command to open the port:
+```bash
+ kubectl port-forward service/user-api-service 3000:3000
+```  
+  
+The web application will be accessible through http://localhost:3000/ :
+
+![Screenshot](image/6_localhost3000.png)
+
+
 
 
 # Authors
