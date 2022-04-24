@@ -4,14 +4,28 @@
 
 During this project, we will be implementing a web API application with a Redis database along with the environment for automatating the building, testing, deployment and running of our project.
 
-## Objectives
+# Table of Contents
 
-1. Create a web application
-2. Apply CI/CD pipeline
-3. Configure and provision a virtual environment and run the application using the IaC approach
-4. Build Docker image of the application
-5. Make container orchestration using Docker Compose
-6. Make container orchestration using Kubernetes
+- [ECE - Devops Project - ING4](#ece---devops-project---ing4)
+  - [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [Before starting](#before-starting)
+- [1. Creation of a NodeJS web application](#1-creation-of-a-nodejs-web-application)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Testing](#testing)
+- [2. Application of CI/CD pipeline uning Heroku and GitHub Actions](#2-application-of-cicd-pipeline-uning-heroku-and-github-actions)
+- [3. Application of the IaC approach](#3-application-of-the-iac-approach)
+  - [Installation](#installation-1)
+- [4. Build Docker image of the application](#4-build-docker-image-of-the-application)
+  - [Installation](#installation-2)
+  - [Usage](#usage-1)
+- [5. Organization of Container with Docker Compose](#5-organization-of-container-with-docker-compose)
+- [6. Organization of Docker with Kubernetes](#6-organization-of-docker-with-kubernetes)
+  - [Installation of Minikube](#installation-of-minikube)
+  - [Deploy our app using Manifest YAML files](#deploy-our-app-using-manifest-yaml-files)
+- [Progress](#progress)
+- [Authors](#authors)
 
 # Before starting
 
@@ -21,7 +35,7 @@ git clone https://github.com/AceStar0/ece-devops-ing4.git
 ```
 
 
-# 1. Create a web application
+# 1. Creation of a NodeJS web application
 
 ## Installation
 
@@ -30,7 +44,7 @@ This application is implemented in NodeJS along with a Redis database.
 1. [Install NodeJS](https://nodejs.org/en/download/)
 2. [Install Redis](https://redis.io/download)
 
-Go to the user-api/ directory of the cloned repository and run:
+Go to the [user-api](./user-api/) directory of the cloned repository and run:
 
 ```
 npm install 
@@ -40,7 +54,7 @@ npm install
 
   1. Run a web server
 
-From the /user-api directory of the repository, run:
+From the [user-api](./user-api/) directory of the repository, run:
 
 ```
 npm run start
@@ -87,12 +101,12 @@ All 12 tests should be passed :
 ![image](image/1.%20npm_run_test.png)
 
 
-# 2. Apply CI/CD pipeline
+# 2. Application of CI/CD pipeline uning Heroku and GitHub Actions
 
   * Continuous Integration with GitHub Actions
   * Continuous Delivery (Deployment) with Heroku
   
-We created an YAML file ```.github/workflow/main.yml``` and we add this code :
+We created an YAML file [.github/workflow/main.yml](./.github/workflows/main.yml) and we add this code :
 
 ```yml
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
@@ -163,7 +177,7 @@ As we have configured Heroku, we can check our Heroku app and we do have our web
 Redis service on Heroku is free, but it requires adding credit card information. Considering this limitation we will not run Redis on Heroku, and the application will be partially non-functional (it will print the "Hello world!" message on the home page, but the user API will not work). However, it will be enough to experience our CI/CD pipeline.
 
 
-# 3. Configure and provision a virtual environment and run the application using the IaC approach
+# 3. Application of the IaC approach
 
 ## Installation 
 
@@ -221,7 +235,7 @@ docker ps
 
 
 
-# 5. Make container orchestration using Docker Compose
+# 5. Organization of Container with Docker Compose
 
 * Configure the [`docker-compose.yaml`](docker-compose.yaml) file to pull our user-api image : 
 ```yml
@@ -238,7 +252,7 @@ services:
     image: acestar01/user-api
 ```
 
-# 6. Make container orchestration using Kubernetes
+# 6. Organization of Docker with Kubernetes
 
 ##  Installation of Minikube
 
@@ -356,8 +370,6 @@ spec:
    kubectl apply -f service.yaml
    ```
 
-## Deploy our app using Manifest YAML files
-
 * Check if the deployments are running with the following command :
   
 ```bash
@@ -389,7 +401,7 @@ minikube dashboard
 ![image](image/6_dashboard.png)
 
 
-## Progress
+# Progress
 
 - [X] Lab 1: devops-introduction
 - [X] Lab 2: scm
@@ -420,7 +432,7 @@ minikube dashboard
 
 
 
-## Authors
+# Authors
 - **Ignace BUI** - <ignace.bui@edu.ece.fr> - ING4-APP-BDA
 - **Jean-Marie FANKAM** - <jeanmarie.fankam@edu.ece.fr> - ING4-APP-BDA
 
